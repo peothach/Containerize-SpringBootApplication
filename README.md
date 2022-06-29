@@ -4,7 +4,7 @@ Docker has a simple *Dockerfile* file format that it uses to specify the *layers
 
 ***Example 1. Dockerfile***
 
-    FROM openjdk:8-jdk-alpine
+    FROM openjdk:11.0.15-jdk-oraclelinux7
     ARG JAR_FILE=target/*.jar
     COPY ${JAR_FILE} app.jar
     ENTRYPOINT ["java","-jar","/app.jar"]
@@ -26,7 +26,7 @@ Running applications with user privileges helps to mitigate some risks (see, for
 
 ***Example 2. Dockerfile***
 
-    FROM openjdk:8-jdk-alpine
+    FROM openjdk:11.0.15-jdk-oraclelinux7
     RUN addgroup -S spring && adduser -S spring -G spring
     USER spring:spring
     ARG JAR_FILE=target/*.jar
