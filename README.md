@@ -1,8 +1,8 @@
-**Containerize It**
+**Containerize Spring Boot Application**
 
 Docker has a simple *Dockerfile* file format that it uses to specify the *layers* of an image. Create the following Dockerfile in your Spring Boot project:
 
-Example 1. Dockerfile
+***Example 1. Dockerfile***
 
     FROM openjdk:8-jdk-alpine
     ARG JAR_FILE=target/*.jar
@@ -24,7 +24,7 @@ This Dockerfile is very simple, but it is all you need to run a Spring Boot app 
 --------------------------
 Running applications with user privileges helps to mitigate some risks (see, for example, a thread on StackExchange). So, an important improvement to the Dockerfile is to run the application as a non-root user:
 
-Example 2. Dockerfile
+***Example 2. Dockerfile***
 
     FROM openjdk:8-jdk-alpine
     RUN addgroup -S spring && adduser -S spring -G spring
@@ -47,11 +47,13 @@ Note the *started by* in the first INFO log entry:
 
 -----
 **Build a Docker Image with Gradle**
+
 You can build a tagged docker image with Gradle in one command:
 
     ./gradlew bootBuildImage --imageName=springio/gs-spring-boot-docker
 
 **Build a Docker Image with Maven**
+
 To get started quickly, you can run the Spring Boot image generator without even changing your *pom.xml* (remember that the Dockerfile, if it is still, there is *ignored*):
 
     ./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=springio/gs-spring-boot-docker
